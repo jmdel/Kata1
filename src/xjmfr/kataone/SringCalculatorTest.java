@@ -10,6 +10,7 @@ public class SringCalculatorTest {
 	private final String TWO_NUMBERS_TO_ADD = "2,1";
 	private final String FIVE_NUMBERS_TO_ADD = "1,2,3,4,5";
 	private final String MANY_NUMBERS_AND_SEPARATOR_TO_ADD="1\n2,3";
+	private final String CHANGE_SEPARATOR_AND_ADD="//;\n1;2";
 	@Before
 	public void setup() {
 		stringCalculator = new StringCalculator();
@@ -51,6 +52,15 @@ public class SringCalculatorTest {
 		int res = stringCalculator.add(MANY_NUMBERS_AND_SEPARATOR_TO_ADD);
 		// Then
 		assertEquals(6, res);
+	}
+	@Test
+	public void addChangeSeparator() {
+		// Given
+
+		// When
+		int res = stringCalculator.add(CHANGE_SEPARATOR_AND_ADD);
+		// Then
+		assertEquals(3, res);
 	}
 
 }
