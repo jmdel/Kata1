@@ -11,6 +11,9 @@ public class SringCalculatorTest {
 	private final String FIVE_NUMBERS_TO_ADD = "1,2,3,4,5";
 	private final String MANY_NUMBERS_AND_SEPARATOR_TO_ADD="1\n2,3";
 	private final String CHANGE_SEPARATOR_AND_ADD="//;\n1;2";
+	private final String CHANGE_SEPARATOR_AND_ADD_ERROR="//;\n1,2";
+	private final String NEGATIVE_NUMBER="-10";
+
 	@Before
 	public void setup() {
 		stringCalculator = new StringCalculator();
@@ -59,6 +62,26 @@ public class SringCalculatorTest {
 
 		// When
 		int res = stringCalculator.add(CHANGE_SEPARATOR_AND_ADD);
+		// Then
+		assertEquals(3, res);
+	}
+
+	@Test(expected=NumberFormatException.class)
+	public void addChangeSeparatorError() {
+		// Given
+
+		// When
+		int res = stringCalculator.add(CHANGE_SEPARATOR_AND_ADD_ERROR);
+		// Then
+		assertEquals(3, res);
+	}
+
+	@Test(expected=RuntimeException.class)
+	public void negativeNumber() {
+		// Given
+
+		// When
+		int res = stringCalculator.add(NEGATIVE_NUMBER);
 		// Then
 		assertEquals(3, res);
 	}
