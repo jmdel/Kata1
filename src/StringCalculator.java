@@ -1,11 +1,15 @@
+import java.util.StringTokenizer;
 
 public class StringCalculator {
 	
 	public int add(String str){
-		if (str.equals("")) {
-			return 0;
+		int res = 0;
+		
+		StringTokenizer st = new StringTokenizer(str, ",");
+		while (st.hasMoreElements()){
+			res += Integer.parseInt(st.nextToken());
 		}
-		return 0;
+		return res;
 	}
 
 }
