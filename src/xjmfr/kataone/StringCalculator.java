@@ -4,22 +4,22 @@ import java.util.StringTokenizer;
 
 public class StringCalculator {
 
-	public int add(String str) {
+	public int add(String stringSequence) {
 		int res = 0;
 		char separator = ','; // General default separator
-		if (str.startsWith("//")) {// Search a change of separator
-			separator = str.charAt(2); // Catch separator
-			str = str.substring(3);// cut the fist part
+		if (stringSequence.startsWith("//")) {// Search a change of separator
+			separator = stringSequence.charAt(2); // Catch separator
+			stringSequence = stringSequence.substring(3);// Cut the fist part to get an computable sequence in String
 		}
 
-		str = str.replace('\n', separator);// Generalize separator for \n
+		stringSequence = stringSequence.replace('\n', separator);// Generalize separator for \n
 
-		StringTokenizer st = new StringTokenizer(str, String.valueOf(separator));
+		StringTokenizer stringTokenizer = new StringTokenizer(stringSequence, String.valueOf(separator));
 
-		while (st.hasMoreElements()) {
-			int token = Integer.parseInt(st.nextToken());
+		while (stringTokenizer.hasMoreElements()) {
+			int token = Integer.parseInt(stringTokenizer.nextToken());
 			if (token < 0) { // throws an exception if negative
-				throw new RuntimeException("Fuck the negative");
+				throw new RuntimeException("Negative value not allowed");
 			}
 			if (token <= 1000) {
 				res += token;
