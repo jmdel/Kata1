@@ -13,7 +13,7 @@ public class SringCalculatorTest {
 	private final String CHANGE_SEPARATOR_AND_ADD="//;\n1;2";
 	private final String CHANGE_SEPARATOR_AND_ADD_ERROR="//;\n1,2";
 	private final String NEGATIVE_NUMBER="-10";
-
+	private final String BIGGER1000="1001,2";
 	@Before
 	public void setup() {
 		stringCalculator = new StringCalculator();
@@ -86,4 +86,14 @@ public class SringCalculatorTest {
 		assertEquals(3, res);
 	}
 
+	@Test
+	public void ignoreBiggerThan1000() {
+		// Given
+
+		// When
+		int res = stringCalculator.add(BIGGER1000);
+		// Then
+		assertEquals(2, res);
+	}
+	
 }
